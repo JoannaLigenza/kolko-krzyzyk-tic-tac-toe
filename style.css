@@ -1,0 +1,32 @@
+
+table{
+	max-width: 450px;
+	max-height: 450px;
+	margin: 0 auto;
+}
+
+
+
+td
+{
+	width: 150px;
+	height: 150px;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 50px;
+}
+
+#helper
+{
+	display: none;
+}
+
+#statement
+{
+	max-width: 450px;
+	height: 150px;
+	margin: 50px auto;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 30px;
+}
