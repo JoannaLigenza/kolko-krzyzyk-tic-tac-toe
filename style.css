@@ -1,4 +1,6 @@
-
+body {
+	background-color: #e9e9e9;
+}
 
 .inline {
 	display: inline-block;
@@ -13,6 +15,7 @@
 	border: 1px solid black;
 	padding: 20px 0;
 	margin: 7px 0;
+	background-color: white;
 }
 
 #one_player, #two_players, #reset {
@@ -37,6 +40,8 @@ td
 	border: 1px solid black;
 	text-align: center;
 	font-size: 50px;
+	background-color: white;
+	border-radius: 5px;
 }
 
 #helper
@@ -52,4 +57,15 @@ td
 	border: 1px solid black;
 	text-align: center;
 	font-size: 30px;
+	background-color: white;
+}
+
+@media screen and (max-width: 400px) {
+	.inline {
+		display: block;
+	}
+	
+	#choose, #players, #resert_div {
+		width: 100%;
+	}
 }

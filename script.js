@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	const one_player = document.getElementById("one_player");
 	const two_players = document.getElementById("two_players");
 	const reset_game = document.getElementById("reset");
+	const play_with = document.getElementById("play_with");
+	const you_choose = document.getElementById("you_choose");
 	let helper = "0";
 	let player = "";
 	let winner = "";
@@ -16,23 +18,24 @@ document.addEventListener('DOMContentLoaded', function() {
 	one_player.addEventListener("click", function() {
 		player = "computer_play";
 		console.log(player);
-		document.getElementById("play_with").innerText = "Grasz z komputerem";
+		play_with.innerText = "Grasz z komputerem";
 	})
 	
 	two_players.addEventListener("click", function() {
 		player = "human_play";
 		console.log(player);
-		document.getElementById("play_with").innerText = "Grasz z inną osobą";
+		play_with.innerText = "Grasz z inną osobą";
 	})
 	
 	X.addEventListener("click", function() {
 		helper = "X";
 		if (player == "human_play") { 
-		document.getElementById("you_choose").innerText = "Wybrałeś X \n \n Przeciwnik gra O";
+		you_choose.innerText = "Wybrałeś X \n \n Przeciwnik gra O";
 		} else { 
-		document.getElementById("you_choose").innerText = "Wybrałeś X";
+		you_choose.innerText = "Wybrałeś X";
 		}
 		zero.style.display = "none";
+		console.log(helper);
 	})
 	
 	zero.addEventListener("click", function() {
@@ -43,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.getElementById("you_choose").innerText = "Wybrałeś O";
 		}
 		X.style.display = "none";
+		console.log(helper);
 	})
 	
 	reset_game.addEventListener("click", function() {
@@ -53,7 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			player = "";
 			X.style.display = "inline-block";
 			zero.style.display = "inline-block";
+			winner = "";
+			play_with.innerText = "";
+			you_choose.innerText = "";
 		}
+		console.log(helper);
 	})
 	
 	// Funkcja gry - naprzemiennie wstawiamy 0 i X
@@ -144,39 +152,39 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	function wynik(C)	{ 
 	
-	let all_td_tab = [];
-	
-	
-	// sprawdzanie wyniku w poziomie (skacze co 3 komorki, bo musi byc sprawdzony 3 razy)
-	for ( i = 0; i < all_td.length; i = i+3 )				
-	{ 
-		if (all_td[i].innerText == C && all_td[i+1].innerText == C && all_td[i+2].innerText == C) { 
-		wygrana(C);
+		let all_td_tab = [];
+		
+		
+		// sprawdzanie wyniku w poziomie (skacze co 3 komorki, bo musi byc sprawdzony 3 razy)
+		for ( i = 0; i < all_td.length; i = i+3 )				
+		{ 
+			if (all_td[i].innerText == C && all_td[i+1].innerText == C && all_td[i+2].innerText == C) { 
+			wygrana(C);
+			}
 		}
-	}
-	// sprawdzanie wyniku w pionie (musi byc sprawdzony 3 razy )
-	for ( i = 0; i < 3; i= i+1 )							
-	{ 	
-		if (all_td[i].innerText == C && all_td[i+3].innerText == C && all_td[i+6].innerText == C) { 
-		wygrana(C);
+		// sprawdzanie wyniku w pionie (musi byc sprawdzony 3 razy )
+		for ( i = 0; i < 3; i= i+1 )							
+		{ 	
+			if (all_td[i].innerText == C && all_td[i+3].innerText == C && all_td[i+6].innerText == C) { 
+			wygrana(C);
+			}
 		}
-	}
-	// sprawdzanie skosow
-		if (all_td[0].innerText == C && all_td[4].innerText == C && all_td[8].innerText == C) { 
-		wygrana(C);
-		}
-		if (all_td[2].innerText == C && all_td[4].innerText == C && all_td[6].innerText == C) { 
-		wygrana(C);
-		}
-	// remis
-	for ( i = 0; i < all_td.length; i = i+1 ) {
-		if (all_td[i].innerText != "" ) {
-			all_td_tab.push(all_td[i]);
-		}}
-	//console.log(all_td_tab.length);
-		if (all_td_tab.length == 9 && winner != true) {
-		//if (all_td_tab.length == 9 && document.querySelector("#statement").innerText !== "Wygrana!") {
-			tie();
-		}
+		// sprawdzanie skosow
+			if (all_td[0].innerText == C && all_td[4].innerText == C && all_td[8].innerText == C) { 
+			wygrana(C);
+			}
+			if (all_td[2].innerText == C && all_td[4].innerText == C && all_td[6].innerText == C) { 
+			wygrana(C);
+			}
+		// remis
+		for ( i = 0; i < all_td.length; i = i+1 ) {
+			if (all_td[i].innerText != "" ) {
+				all_td_tab.push(all_td[i]);
+			}}
+		//console.log(all_td_tab.length);
+			if (all_td_tab.length == 9 && winner != true) {
+			//if (all_td_tab.length == 9 && document.querySelector("#statement").innerText !== "Wygrana!") {
+				tie();
+			}
 	}	
 });
